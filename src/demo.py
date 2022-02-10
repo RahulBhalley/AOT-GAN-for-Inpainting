@@ -33,6 +33,8 @@ def demo(args):
     model = net.InpaintGenerator(args)
     model.load_state_dict(torch.load(args.pre_train, map_location='cpu'))
     model.eval()
+    torch.save(model, 'place2model.pt')
+    print('Saved model')
 
     for fn in img_list:
         filename = os.path.basename(fn).split('.')[0]
